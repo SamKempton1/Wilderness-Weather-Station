@@ -1,0 +1,242 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="number-slide"],
+[class*=" number-slide"] {
+  background: grey;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  height: 3000px;
+  max-height: 100vh;
+}
+
+.number-slide1 {
+  background-image: url('../src/images/location1.jpg');
+}
+
+.number-slide2 {
+  background-image: url('../src/images/location2.jpg');
+}
+
+.number-slide3 {
+  background-image: url('../src/images/location3.jpg');
+}
+
+.number-slide4 {
+  background-image: url('../src/images/location4.jpg');
+}
+
+.number-slide5 {
+  background: rgb(255, 64, 156);
+  background: linear-gradient(
+    128deg,
+    rgba(255, 64, 156, 1) 0%,
+    rgba(255, 63, 63, 1) 100%
+  );
+}
+.number-slide6 {
+  background: rgb(64, 76, 255);
+  background: linear-gradient(
+    128deg,
+    rgba(64, 76, 255, 1) 0%,
+    rgba(174, 63, 255, 1) 100%
+  );
+}
+
+.mb-2 {
+  border: black;
+}
+
+.navigation-wrapper {
+  position: relative;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #000;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
+.top-left {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  font-size: 18px;
+  box-sizing: 200px;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  font-size: 18px;
+  box-sizing: 25%;
+}
+
+.top-right {
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  box-sizing: 200px;
+}
+
+.bottom-right1 {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+
+.bottom-right2 {
+  position: absolute;
+  bottom: 5%;
+  right: 27%;
+}
+
+.tempIcon {
+  position: absolute;
+  top: 40%;
+  left: 15%;
+}
+.imgSize {
+  width: 100px;
+
+}
+
+.average {
+  position: absolute;
+  right: 30%
+}
+
+.min {
+  position: absolute;
+  right: 29%;
+  top: 49%;
+}
+
+.max {
+  position: absolute;
+  right: 28%;
+  top: 70%
+}
+
+.wind-direction{
+  position: absolute;
+  top: 20%;
+  left: 37%;
+  font-size: larger;
+}
+
+.wind-direction-title {
+  position: absolute;
+  bottom: 15%;
+}
+
+.rainfall-title{
+  position: absolute;
+  bottom: 20%;
+}
+.rainfall-icon {
+  position: absolute;
+  top: 15%;
+}
+
+.rainfall{
+  position: absolute;
+  bottom: 5%;
+  left: 25%;
+  text-align: center;
+}
+.rainfall-image-size {
+  position: absolute;
+  width: 100px;
+  left: 65px;
+  top: 1px;
+}
