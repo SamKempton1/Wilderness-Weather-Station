@@ -10,8 +10,10 @@ import groundTemp from "../src/images/groundtemp.png";
 import airTemp from "../src/images/airtemp.png";
 import windSpeed from "../src/images/windspeed.png";
 import rainTotal from "../src/images/raintotal.png";
+import windDirection from "../src/images/winddirection.png";
 
 import Axios from 'axios'
+
 
 export default function Layout({ children }) {
 
@@ -156,6 +158,9 @@ export default function Layout({ children }) {
             </Card>
             <Card className="card-t bottom-right1" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
               <CardContent>
+              <div className="directionIcon">
+                  <img className="imgSize" src={windDirection} />
+                </div>
                 <Typography
                   style={{ fontSize: 40 }}
                   color="black"
@@ -267,6 +272,9 @@ export default function Layout({ children }) {
             </Card>
             <Card className="card-t bottom-right1" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
               <CardContent>
+              <div className="directionIcon">
+                  <img className="imgSize" src={windDirection} />
+                </div>
                 <Typography
                   style={{ fontSize: 40 }}
                   color="black"
@@ -379,6 +387,9 @@ export default function Layout({ children }) {
             </Card>
             <Card className="card-t bottom-right1" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
               <CardContent>
+              <div className="directionIcon">
+                  <img className="imgSize" src={windDirection} />
+                </div>
                 <Typography
                   style={{ fontSize: 40 }}
                   color="black"
