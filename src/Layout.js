@@ -11,7 +11,11 @@ import airTemp from "../src/images/airtemp.png";
 import windSpeed from "../src/images/windspeed.png";
 import rainTotal from "../src/images/raintotal.png";
 
+import mapIcon from "../src/images/mapIcon.png"
+import connectIcon from "../src/images/WirelessIcon.png"
+
 import Axios from 'axios'
+import { sizeHeight } from '@mui/system';
 
 export default function Layout({ children }) {
 
@@ -72,344 +76,560 @@ export default function Layout({ children }) {
         <div
           ref={sliderRef}
           className="keen-slider"
+
         >
           <div
             className="keen-slider__slide number-slide1"
           >
+
+
+            <div style={{
+              width: "100%",
+
+
+            }}>
+              <div className='titleHeader1'>
+                <div className="titleCardDiv" style={{ padding: 250 }}>
+                  <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 0.9)', }}>
+                    <CardContent>
+                      <div className="tempIcon">
+                        <img className="imgSize" src={mapIcon} />
+                      </div>
+                      <Typography
+                        style={{ fontSize: 44 }}
+                        color="black"
+                        gutterBottom
+                      >
+                        Amazon Rainforest Weather Conditions
+                      </Typography>
+
+                      <Typography className="stationStatus" variant="h5" component="h2">
+                        Station Status: <b>Online</b>
+                      </Typography>
+                      <Typography className="stationCordinates" variant="h5" component="h2">
+                        Elev 63 ft, 453.03 °S, 87.32 °W
+                      </Typography>
+                    </CardContent>
+
+                  </Card>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
             <div>
               {location.at(0)}
+
             </div>
 
-            <Card className="card-t bottom-left" style={{ width: "40%", height: "40%", right: "15%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={windSpeed} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Wind Speed
-                </Typography>
-                <Typography className="wind-speed average" variant="h5" component="h2">
-                  Average: <b>{WS.at(0)} mph</b>
-                </Typography>
-                <Typography className="wind-speed min" variant="h5" component="h2">
-                  Minimum: <b>{WSMin.at(0)} mph</b>
-                </Typography>
-                <Typography className="wind-speed max" variant="h5" component="h2">
-                  Maximum: <b>{WSMax.at(0)} mph</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-
-            <Card className="card-t top-left" style={{ width: "40%", height: "40%", right: "50%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={groundTemp} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Ground Temperature
-                </Typography>
-                <Typography className="ground-temp average" variant="h5" component="h2">
-                  Average: <b>{GTA.at(0)} °F</b>
-                </Typography>
-                <Typography className="ground-temp min" variant="h5" component="h2">
-                  Minimum: <b>{GTMin.at(0)} °F</b>
-                </Typography>
-                <Typography className="ground-temp max" variant="h5" component="h2">
-                  Maximum: <b>{GTMax.at(0)} °F</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-
-            <Card className="card-t top-right" style={{ width: "40%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={airTemp} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Air Temperature
-                </Typography>
-                <Typography className="ground-temp average" variant="h5" component="h2">
-                  Average: <b>{ATA.at(0)} °F</b>
-                </Typography>
-                <Typography className="ground-temp min" variant="h5" component="h2">
-                  Minimum: <b>{ATMin.at(0)} °F</b>
-                </Typography>
-                <Typography className="ground-temp max" variant="h5" component="h2">
-                  Maximum: <b>{ATMax.at(0)} °F</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-            <Card className="card-t bottom-right1" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  <div className="wind-direction"> <b>{direction.at(0)}</b> </div>
-                  <div className="wind-direction-title">Wind Direction</div>
-
-                </Typography>
-              </CardContent>
-
-            </Card>
-            <Card className="card-t bottom-right2" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
-                  <div className="rainfall-title">Total Rainfall</div>
-                  <div className="rainfall" variant="h5" component="h2">
-                    <b>{rainfall.at(0)} in</b></div>
-                </Typography>
+            <div className='scrollView' >
 
 
-              </CardContent>
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={windSpeed} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Wind Speed
+                    </Typography>
+                    <Typography className="wind-speed average" variant="h5" component="h2">
+                      Average: <b>{WS.at(0)}13 mph</b>
+                    </Typography>
+                    <Typography className="wind-speed min" variant="h5" component="h2">
+                      Minimum: <b>{WSMin.at(0)}2 mph</b>
+                    </Typography>
+                    <Typography className="wind-speed max" variant="h5" component="h2">
+                      Maximum: <b>{WSMax.at(0)}22 mph</b>
+                    </Typography>
+                  </CardContent>
 
-            </Card>
+                </Card>
+              </div>
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: '100px', boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      <div className="wind-direction"> <b>{direction.at(0)}</b> </div>
+                      <div className="wind-direction-title">Wind Direction</div>
+                      <div className='wind-direction-icon'>
+                        South
+                        &#8595;
+                      </div>
+
+
+
+
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+
+
+              </div>
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={groundTemp} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Ground Temperature
+                    </Typography>
+                    <Typography className="ground-temp average" variant="h5" component="h2">
+                      Average: <b>{GTA.at(0)} 80°F</b>
+                    </Typography>
+                    <Typography className="ground-temp min" variant="h5" component="h2">
+                      Minimum: <b>{GTMin.at(0)} 72°F</b>
+                    </Typography>
+                    <Typography className="ground-temp max" variant="h5" component="h2">
+                      Maximum: <b>{GTMax.at(0)} 99°F</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+              </div>
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={airTemp} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Air Temperature
+                    </Typography>
+                    <Typography className="ground-temp average" variant="h5" component="h2">
+                      Average: <b>{ATA.at(0)} 75°F</b>
+                    </Typography>
+                    <Typography className="ground-temp min" variant="h5" component="h2">
+                      Minimum: <b>{ATMin.at(0)} 69°F</b>
+                    </Typography>
+                    <Typography className="ground-temp max" variant="h5" component="h2">
+                      Maximum: <b>{ATMax.at(0)} 90°F</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+              </div>
+
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
+                      <div className="rainfall-title">Total Rainfall</div>
+                      <div className="rainfall" variant="h5" component="h2">
+                        <b>{rainfall.at(0)}15 in</b></div>
+                    </Typography>
+
+
+                  </CardContent>
+
+                </Card>
+              </div>
+            </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
           <div className="keen-slider__slide number-slide2">
-            <div>
-              {location.at(1)}
+
+
+            <div style={{
+              width: "100%",
+            }}>
+              <div className='titleHeader2'>
+                <div className="titleCardDiv" style={{ padding: 250 }}>
+                  <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 0.9)', }}>
+                    <CardContent>
+                      <div className="tempIcon">
+                        <img className="imgSize" src={mapIcon} />
+                      </div>
+                      <Typography
+                        style={{ fontSize: 44 }}
+                        color="black"
+                        gutterBottom
+                      >
+                        Swiss Alps Weather Conditions
+                      </Typography>
+
+                      <Typography className="stationStatus" variant="h5" component="h2">
+                        Station Status: <b>Online</b>
+                      </Typography>
+                      <Typography className="stationCordinates" variant="h5" component="h2">
+                        Elev 3663 ft, 43.03 °N, 87.92 °W
+                      </Typography>
+                    </CardContent>
+
+                  </Card>
+
+                </div>
+
+
+              </div>
+
             </div>
-            <Card className="card-t bottom-left" style={{ width: "40%", height: "40%", right: "15%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={windSpeed} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Wind Speed
-                </Typography>
-                <Typography className="wind-speed average" variant="h5" component="h2">
-                  Average: <b>{WS.at(1)} mph</b>
-                </Typography>
-                <Typography className="wind-speed min" variant="h5" component="h2">
-                  Minimum: <b>{WSMin.at(1)} mph</b>
-                </Typography>
-                <Typography className="wind-speed max" variant="h5" component="h2">
-                  Maximum: <b>{WSMax.at(1)} mph</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-
-            <Card className="card-t top-left" style={{ width: "40%", height: "40%", right: "50%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={groundTemp} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Ground Temperature
-                </Typography>
-                <Typography className="ground-temp average" variant="h5" component="h2">
-                  Average: <b>{GTA.at(1)} °F</b>
-                </Typography>
-                <Typography className="ground-temp min" variant="h5" component="h2">
-                  Minimum: <b>{GTMin.at(1)} °F</b>
-                </Typography>
-                <Typography className="ground-temp max" variant="h5" component="h2">
-                  Maximum: <b>{GTMax.at(1)} °F</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-
-            <Card className="card-t top-right" style={{ width: "40%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={airTemp} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Air Temperature
-                </Typography>
-                <Typography className="ground-temp average" variant="h5" component="h2">
-                  Average: <b>{ATA.at(1)} °F</b>
-                </Typography>
-                <Typography className="ground-temp min" variant="h5" component="h2">
-                  Minimum: <b>{ATMin.at(1)} °F</b>
-                </Typography>
-                <Typography className="ground-temp max" variant="h5" component="h2">
-                  Maximum: <b>{ATMax.at(1)} °F</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-            <Card className="card-t bottom-right1" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  <div className="wind-direction"> <b>{direction.at(1)}</b> </div>
-                  <div className="wind-direction-title">Wind Direction</div>
-
-                </Typography>
-              </CardContent>
-
-            </Card>
-            <Card className="card-t bottom-right2" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
-                  <div className="rainfall-title">Total Rainfall</div>
-                  <div className="rainfall" variant="h5" component="h2">
-                    <b>{rainfall.at(1)} in</b></div>
-                </Typography>
 
 
-              </CardContent>
 
-            </Card>
+            <div>
+              {location.at(0)}
 
+            </div>
+
+            <div className='scrollView' >
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={windSpeed} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Wind Speed
+                    </Typography>
+                    <Typography className="wind-speed average" variant="h5" component="h2">
+                      Average: <b>{WS.at(0)}28 mph</b>
+                    </Typography>
+                    <Typography className="wind-speed min" variant="h5" component="h2">
+                      Minimum: <b>{WSMin.at(0)}18 mph</b>
+                    </Typography>
+                    <Typography className="wind-speed max" variant="h5" component="h2">
+                      Maximum: <b>{WSMax.at(0)}35 mph</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+
+
+                <Card className="card-t full-width" style={{ width: "95%", height: '100px', boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      <div className="wind-direction"> <b>{direction.at(0)}</b> </div>
+                      <div className="wind-direction-title">Wind Direction</div>
+                      <div className='wind-direction-icon'>
+                        North
+                        &uarr;
+                      </div>
+
+
+
+
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+
+
+              </div>
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={groundTemp} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Ground Temperature
+                    </Typography>
+                    <Typography className="ground-temp average" variant="h5" component="h2">
+                      Average: <b>{GTA.at(0)} 10°F</b>
+                    </Typography>
+                    <Typography className="ground-temp min" variant="h5" component="h2">
+                      Minimum: <b>{GTMin.at(0)} 2°F</b>
+                    </Typography>
+                    <Typography className="ground-temp max" variant="h5" component="h2">
+                      Maximum: <b>{GTMax.at(0)} 45°F</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+              </div>
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={airTemp} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Air Temperature
+                    </Typography>
+                    <Typography className="ground-temp average" variant="h5" component="h2">
+                      Average: <b>{ATA.at(0)} 2°F</b>
+                    </Typography>
+                    <Typography className="ground-temp min" variant="h5" component="h2">
+                      Minimum: <b>{ATMin.at(0)} -13°F</b>
+                    </Typography>
+                    <Typography className="ground-temp max" variant="h5" component="h2">
+                      Maximum: <b>{ATMax.at(0)} 10°F</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+              </div>
+
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
+                      <div className="rainfall-title">Total Rainfall</div>
+                      <div className="rainfall" variant="h5" component="h2">
+                        <b>{rainfall.at(0)}30 in</b></div>
+                    </Typography>
+
+
+                  </CardContent>
+
+                </Card>
+              </div>
+            </div>
           </div>
+
+
+
+
+
+
+
+
           <div className="keen-slider__slide number-slide3">
-            <div>
-              {location.at(2)}
+
+
+            <div style={{
+              width: "100%",
+
+            }}>
+              <div className='titleHeader3'>
+                <div className="titleCardDiv" style={{ padding: 250 }}>
+                  <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 0.9)', }}>
+                    <CardContent>
+                      <div className="tempIcon">
+                        <img className="imgSize" src={mapIcon} />
+                      </div>
+                      <Typography
+                        style={{ fontSize: 44 }}
+                        color="black"
+                        gutterBottom
+                      >
+                        Egypt Weather Conditions
+                      </Typography>
+
+                      <Typography className="stationStatus" variant="h5" component="h2">
+                        Station Status: <b>Online</b>
+                      </Typography>
+                      <Typography className="stationCordinates" variant="h5" component="h2">
+                        Elev 125 ft, 43.03 °N, 87.92 °W
+                      </Typography>
+                    </CardContent>
+
+                  </Card>
+
+                </div>
+
+
+              </div>
+
             </div>
-            <Card className="card-t bottom-left" style={{ width: "40%", height: "40%", right: "15%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={windSpeed} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Wind Speed
-                </Typography>
-                <Typography className="wind-speed average" variant="h5" component="h2">
-                  Average: <b>{WS.at(2)} mph</b>
-                </Typography>
-                <Typography className="wind-speed min" variant="h5" component="h2">
-                  Minimum: <b>{WSMin.at(2)} mph</b>
-                </Typography>
-                <Typography className="wind-speed max" variant="h5" component="h2">
-                  Maximum: <b>{WSMax.at(2)} mph</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-
-            <Card className="card-t top-left" style={{ width: "40%", height: "40%", right: "50%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={groundTemp} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Ground Temperature
-                </Typography>
-                <Typography className="ground-temp average" variant="h5" component="h2">
-                  Average: <b>{GTA.at(2)} °F</b>
-                </Typography>
-                <Typography className="ground-temp min" variant="h5" component="h2">
-                  Minimum: <b>{GTMin.at(2)} °F</b>
-                </Typography>
-                <Typography className="ground-temp max" variant="h5" component="h2">
-                  Maximum: <b>{GTMax.at(2)} °F</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-
-            <Card className="card-t top-right" style={{ width: "40%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <div className="tempIcon">
-                  <img className="imgSize" src={airTemp} />
-                </div>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  Air Temperature
-                </Typography>
-                <Typography className="ground-temp average" variant="h5" component="h2">
-                  Average: <b>{ATA.at(2)} °F</b>
-                </Typography>
-                <Typography className="ground-temp min" variant="h5" component="h2">
-                  Minimum: <b>{ATMin.at(2)} °F</b>
-                </Typography>
-                <Typography className="ground-temp max" variant="h5" component="h2">
-                  Maximum: <b>{ATMax.at(2)} °F</b>
-                </Typography>
-              </CardContent>
-
-            </Card>
-            <Card className="card-t bottom-right1" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  <div className="wind-direction"> <b>{direction.at(2)}</b> </div>
-                  <div className="wind-direction-title">Wind Direction</div>
-
-                </Typography>
-              </CardContent>
-
-            </Card>
-            <Card className="card-t bottom-right2" style={{ width: "18%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 0.4)', }}>
-              <CardContent>
-
-                <Typography
-                  style={{ fontSize: 40 }}
-                  color="black"
-                  gutterBottom
-                >
-                  <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
-                  <div className="rainfall-title">Total Rainfall</div>
-                  <div className="rainfall" variant="h5" component="h2">
-                    <b>{rainfall.at(2)} in</b></div>
-                </Typography>
 
 
-              </CardContent>
 
-            </Card>
+            <div>
+              {location.at(0)}
 
+            </div>
+
+            <div className='scrollView' >
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={windSpeed} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Wind Speed
+                    </Typography>
+                    <Typography className="wind-speed average" variant="h5" component="h2">
+                      Average: <b>{WS.at(0)}12 mph</b>
+                    </Typography>
+                    <Typography className="wind-speed min" variant="h5" component="h2">
+                      Minimum: <b>{WSMin.at(0)}3 mph</b>
+                    </Typography>
+                    <Typography className="wind-speed max" variant="h5" component="h2">
+                      Maximum: <b>{WSMax.at(0)}29 mph</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+
+
+                <Card className="card-t full-width" style={{ width: "95%", height: '100px', boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      <div className="wind-direction"> <b>{direction.at(0)}</b> </div>
+                      <div className="wind-direction-title">Wind Direction</div>
+                      <div className='wind-direction-icon'>
+                        South
+                        &#8595;
+                      </div>
+
+
+
+
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+
+
+              </div>
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={groundTemp} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Ground Temperature
+                    </Typography>
+                    <Typography className="ground-temp average" variant="h5" component="h2">
+                      Average: <b>{GTA.at(0)} 88°F</b>
+                    </Typography>
+                    <Typography className="ground-temp min" variant="h5" component="h2">
+                      Minimum: <b>{GTMin.at(0)} 72°F</b>
+                    </Typography>
+                    <Typography className="ground-temp max" variant="h5" component="h2">
+                      Maximum: <b>{GTMax.at(0)} 114°F</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+              </div>
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+                    <div className="tempIcon">
+                      <img className="imgSize" src={airTemp} />
+                    </div>
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      Air Temperature
+                    </Typography>
+                    <Typography className="ground-temp average" variant="h5" component="h2">
+                      Average: <b>{ATA.at(0)} 73°F</b>
+                    </Typography>
+                    <Typography className="ground-temp min" variant="h5" component="h2">
+                      Minimum: <b>{ATMin.at(0)} 62°F</b>
+                    </Typography>
+                    <Typography className="ground-temp max" variant="h5" component="h2">
+                      Maximum: <b>{ATMax.at(0)} 101°F</b>
+                    </Typography>
+                  </CardContent>
+
+                </Card>
+              </div>
+
+
+              <div className="cardDiv" style={{ padding: 20 }}>
+                <Card className="card-t full-width" style={{ width: "95%", height: "40%", boxSizing: "2%", backgroundColor: 'rgba(239, 242, 225, 1)', }}>
+                  <CardContent>
+
+                    <Typography
+                      style={{ fontSize: 40 }}
+                      color="black"
+                      gutterBottom
+                    >
+                      <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
+                      <div className="rainfall-title">Total Rainfall</div>
+                      <div className="rainfall" variant="h5" component="h2">
+                        <b>{rainfall.at(0)}3 in</b></div>
+                    </Typography>
+
+
+                  </CardContent>
+
+                </Card>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -435,23 +655,25 @@ export default function Layout({ children }) {
           </>
         )}
       </div>
-      {loaded && instanceRef.current && (
-        <div className="dots">
-          {[
-            ...Array(instanceRef.current.track.details.slides.length).keys(),
-          ].map((idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  instanceRef.current?.moveToIdx(idx);
-                }}
-                className={"dot" + (currentSlide === idx ? " active" : "")}
-              ></button>
-            );
-          })}
-        </div>
-      )}
+      {
+        loaded && instanceRef.current && (
+          <div className="dots">
+            {[
+              ...Array(instanceRef.current.track.details.slides.length).keys(),
+            ].map((idx) => {
+              return (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    instanceRef.current?.moveToIdx(idx);
+                  }}
+                  className={"dot" + (currentSlide === idx ? " active" : "")}
+                ></button>
+              );
+            })}
+          </div>
+        )
+      }
     </>
   );
 }
