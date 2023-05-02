@@ -17,6 +17,8 @@ import connectIcon from "../src/images/WirelessIcon.png"
 import Axios from 'axios'
 import { sizeHeight } from '@mui/system';
 
+import { getWeatherData } from '../src/weather-station-API/callAPI';
+
 export default function Layout({ children }) {
 
   //set array of three for each value 
@@ -69,7 +71,128 @@ export default function Layout({ children }) {
     const response = await Axios('http://localhost:5197/weatherstation');
     setComments(response.data);
   }
+
+  getWeatherData("Manaus").then(data => {
+    // Assuming the JSON object is stored in a variable called 'data'
+    console.log(data);
+    const currentAddress = data.address;
+    const currentLatitude = data.latitude;
+    const currentLongitude = data.longitude;
+    const currentTimezone = data.timezone;
+
+    const currentConditions = data.currentConditions;
+
+    const currentTemperature = currentConditions["temp"];
+
+
+    // Extract the relevant data from currentConditions
+    const currentTemp = currentConditions.temp;
+    console.log(currentTemp);
+    const currentWindSpeed = currentConditions.windspeed;
+    const currentWindDir = currentConditions.winddir;
+    const currentConditionsDesc = currentConditions.conditions;
+    const currentFeelsLike = currentConditions.feelslike;
+    const currentPrecip = currentConditions.precip;
+
+
+    const feelsLikeElement = document.getElementById("current-feels-like");
+    if (feelsLikeElement !== null) {
+      feelsLikeElement.textContent = `Current: ${currentFeelsLike}°F`;
+    } else {
+      console.error('Feels Like Element not found');
+    }
+
+    const currentAddressElement = document.getElementById("current-address");
+    if (currentAddressElement !== null) {
+      currentAddressElement.textContent = currentAddress;
+    } else {
+      console.error('Adress Element not found');
+    }
+
+    const currentLatitudeElement = document.getElementById("current-latitude");
+    if (currentLatitudeElement !== null) {
+      currentLatitudeElement.textContent = `${currentLatitude} S,`;
+    } else {
+      console.error('latitude Element not found');
+    }
+
+    const currentLongitudeElement = document.getElementById("current-longitude");
+    if (currentLongitudeElement !== null) {
+      currentLongitudeElement.textContent = `${currentLongitude} W`;
+    } else {
+      console.error(' longitude Element not found');
+    }
+
+    const currentTimezoneElement = document.getElementById("current-timezone");
+    if (currentTimezoneElement !== null) {
+      currentTimezoneElement.textContent = currentTimezone;
+    } else {
+      console.error('currentTimezone Element not found');
+    }
+
+
+    const currentTempElement = document.getElementById("currentTemp");
+    if (currentTempElement !== null) {
+      currentTempElement.textContent = `Current: ${currentTemp}°F`;
+    } else {
+      console.error('currentTemp Element not found');
+    }
+
+    const currentWindSpeedElement = document.getElementById("currentWindSpeed");
+    if (currentWindSpeedElement !== null) {
+      currentWindSpeedElement.textContent = `${currentWindSpeed} mph`;
+    } else {
+      console.error('currentWindSpeed Element not found');
+    }
+
+
+    const currentWindDirElement = document.getElementById("current-wind-direction");
+    if (currentWindDirElement !== null) {
+      currentWindDirElement.textContent = `${currentWindDir}°`;
+    } else {
+      console.error('wind-direction Element not found');
+    }
+
+    const currentConditionsDescElement = document.getElementById("current-conditions");
+    if (currentConditionsDescElement !== null) {
+      currentConditionsDescElement.textContent = `Conditions: ${currentConditionsDesc}`;
+    } else {
+      console.error(' conditions Element not found');
+    }
+
+
+    const currentPrecipElement = document.getElementById("current-precip");
+    if (currentPrecipElement !== null) {
+      currentPrecipElement.textContent = `${currentPrecip} in`;
+    } else {
+      console.error(' precip Element not found');
+    }
+
+
+    currentFeelsLike.textContent = `${currentFeelsLike}°F`;
+
+    currentAddressElement.textContent = `${currentAddress}`;
+    currentLatitudeElement.textContent = `${currentLatitude} S`;
+    currentLongitudeElement.textContent = `${currentLongitude} W`;
+    currentTimezoneElement.textContent = `Timezone: ${currentTimezone}`;
+    currentTempElement.textContent = `Current: ${currentTemp}°F`;
+    currentWindSpeedElement.textContent = `Current: ${currentWindSpeed} mph`;
+    currentConditionsDescElement.textContent = `Conditons: ${currentConditionsDesc}`;
+    currentPrecipElement.textContent = `${currentPrecip}`;
+
+
+  }).catch(error => {
+    console.error('Error fetching weather data:', error);
+  });
+
+
   return (
+
+
+
+
+
+
     <>
       <div className="navigation-wrapper">
 
@@ -96,18 +219,28 @@ export default function Layout({ children }) {
                         <img className="imgSize" src={mapIcon} />
                       </div>
                       <Typography
+                        id="current-address"
                         style={{ fontSize: 44 }}
                         color="black"
                         gutterBottom
                       >
-                        Amazon Rainforest Weather Conditions
                       </Typography>
 
                       <Typography className="stationStatus" variant="h5" component="h2">
                         Station Status: <b>Online</b>
                       </Typography>
                       <Typography className="stationCordinates" variant="h5" component="h2">
-                        Elev 63 ft, 453.03 °S, 87.32 °W
+                        <Typography id='current-timezone' className="stationCordinates" variant="h5" component="h2">
+                        </Typography>
+                        <div className='organization'>
+                          <Typography id='current-latitude' className="stationCordinates" variant="h5" component="h2">
+                          </Typography>
+
+                          <Typography id='current-longitude' className="stationCordinates" variant="h5" component="h2">
+                          </Typography>
+                        </div>
+                        <h3 id='current-conditions'></h3>
+
                       </Typography>
                     </CardContent>
 
@@ -143,15 +276,25 @@ export default function Layout({ children }) {
                     >
                       Wind Speed
                     </Typography>
-                    <Typography className="wind-speed average" variant="h5" component="h2">
-                      Average: <b>{WS.at(0)}13 mph</b>
-                    </Typography>
-                    <Typography className="wind-speed min" variant="h5" component="h2">
-                      Minimum: <b>{WSMin.at(0)}2 mph</b>
-                    </Typography>
-                    <Typography className="wind-speed max" variant="h5" component="h2">
-                      Maximum: <b>{WSMax.at(0)}22 mph</b>
-                    </Typography>
+                    <div className='organization'>
+
+                      <Typography id="currentWindSpeed" className="wind-speed current" variant="h5" component="h2">
+                      </Typography>
+
+
+                    </div>
+
+                    <div className='organization'>
+                      <Typography className="wind-speed average" variant="h5" component="h2">
+                        Average: <b>{WS.at(0)}13 mph</b>
+                      </Typography>
+                      <Typography className="wind-speed min" variant="h5" component="h2">
+                        Minimum: <b>{WSMin.at(0)}2 mph</b>
+                      </Typography>
+                      <Typography className="wind-speed max" variant="h5" component="h2">
+                        Maximum: <b>{WSMax.at(0)}22 mph</b>
+                      </Typography>
+                    </div>
                   </CardContent>
 
                 </Card>
@@ -168,8 +311,9 @@ export default function Layout({ children }) {
                       <div className="wind-direction"> <b>{direction.at(0)}</b> </div>
                       <div className="wind-direction-title">Wind Direction</div>
                       <div className='wind-direction-icon'>
-                        South
-                        &#8595;
+                        <h7 id='current-wind-direction'>
+
+                        </h7>
                       </div>
 
 
@@ -195,15 +339,25 @@ export default function Layout({ children }) {
                     >
                       Ground Temperature
                     </Typography>
-                    <Typography className="ground-temp average" variant="h5" component="h2">
-                      Average: <b>{GTA.at(0)} 80°F</b>
-                    </Typography>
-                    <Typography className="ground-temp min" variant="h5" component="h2">
-                      Minimum: <b>{GTMin.at(0)} 72°F</b>
-                    </Typography>
-                    <Typography className="ground-temp max" variant="h5" component="h2">
-                      Maximum: <b>{GTMax.at(0)} 99°F</b>
-                    </Typography>
+
+                    <div className='organization'>
+
+                      <Typography id="currentTemp" className="wind-speed current" variant="h5" component="h2">
+                      </Typography>
+
+                    </div>
+
+                    <div className='organization'>
+                      <Typography className="ground-temp average" variant="h5" component="h2">
+                        Average: <b>{GTA.at(0)} 80°F</b>
+                      </Typography>
+                      <Typography className="ground-temp min" variant="h5" component="h2">
+                        Minimum: <b>{GTMin.at(0)} 72°F</b>
+                      </Typography>
+                      <Typography className="ground-temp max" variant="h5" component="h2">
+                        Maximum: <b>{GTMax.at(0)} 99°F</b>
+                      </Typography>
+                    </div>
                   </CardContent>
 
                 </Card>
@@ -222,15 +376,26 @@ export default function Layout({ children }) {
                     >
                       Air Temperature
                     </Typography>
-                    <Typography className="ground-temp average" variant="h5" component="h2">
-                      Average: <b>{ATA.at(0)} 75°F</b>
-                    </Typography>
-                    <Typography className="ground-temp min" variant="h5" component="h2">
-                      Minimum: <b>{ATMin.at(0)} 69°F</b>
-                    </Typography>
-                    <Typography className="ground-temp max" variant="h5" component="h2">
-                      Maximum: <b>{ATMax.at(0)} 90°F</b>
-                    </Typography>
+                    <div className='organization'>
+
+                      <Typography id="current-feels-like" className="wind-speed current" variant="h5" component="h2">
+                      </Typography>
+
+                    </div>
+
+
+
+                    <div className='organization'>
+                      <Typography className="ground-temp average" variant="h5" component="h2">
+                        Average: <b>{ATA.at(0)} 75°F</b>
+                      </Typography>
+                      <Typography className="ground-temp min" variant="h5" component="h2">
+                        Minimum: <b>{ATMin.at(0)} 69°F</b>
+                      </Typography>
+                      <Typography className="ground-temp max" variant="h5" component="h2">
+                        Maximum: <b>{ATMax.at(0)} 90°F</b>
+                      </Typography>
+                    </div>
                   </CardContent>
 
                 </Card>
@@ -249,7 +414,8 @@ export default function Layout({ children }) {
                       <div className="rainfall-icon"> <img className="rainfall-image-size" src={rainTotal} /> </div>
                       <div className="rainfall-title">Total Rainfall</div>
                       <div className="rainfall" variant="h5" component="h2">
-                        <b>{rainfall.at(0)}15 in</b></div>
+                        <h7 id='current-precip'></h7>
+                      </div>
                     </Typography>
 
 
@@ -474,7 +640,7 @@ export default function Layout({ children }) {
                         color="black"
                         gutterBottom
                       >
-                        Egypt Weather Conditions
+                        Pyramids of Giza Weather Conditions
                       </Typography>
 
                       <Typography className="stationStatus" variant="h5" component="h2">
@@ -654,7 +820,7 @@ export default function Layout({ children }) {
             />
           </>
         )}
-      </div>
+      </div >
       {
         loaded && instanceRef.current && (
           <div className="dots">
@@ -698,4 +864,3 @@ function Arrow(props) {
     </svg>
   );
 }
-
