@@ -1,4 +1,4 @@
-export function getWeatherData(location) {
+export async function getWeatherData(location) {
     return fetch(
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&include=current&key=P244N5WTVE588PDUWRDNBW898&contentType=json`,
         {
